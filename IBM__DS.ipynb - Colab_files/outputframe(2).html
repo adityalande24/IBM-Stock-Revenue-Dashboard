@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0133)https://9tpbxqwknsi-496ff2e9c6d22116-0-colab.googleusercontent.com/outputframe.html?vrz=colab-external_20261014-060057_RC00_999260457 -->
+<html theme="dark" editor="Default Dark" style="overflow-y: auto;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+  // Avoid arrow function syntax to stay ES5 compatible for the sake of googlebot.
+  window.addEventListener("message", function (message) {
+    if (message.source != window.parent) {
+      return;
+    }
+    if (message.data.sandboxed_iframe_evaluation) {
+      // Message is available in scope so evaluated script can get params from
+      // it.
+      window.currentMessage = message;
+      eval.call(null, message.data.sandboxed_iframe_evaluation);
+      delete window.currentMessage;
+    }
+  });
+</script>
+<style>html{--colab-primary-color:#0b57d0;--colab-primary-text-color:#1f1f1f;--colab-primary-text-color-rgb:31,31,31;--colab-secondary-text-color:#444746;--colab-primary-surface-color:#fff;--colab-secondary-surface-color:#f2f2f2;--colab-border-color:#c4c7c5;--colab-bold-border-color:#747775;--ansi-black:#000;--ansi-red:#8b0000;--ansi-green:#006400;--ansi-yellow:#cdcd00;--ansi-blue:#00e;--ansi-magenta:#cd00cd;--ansi-cyan:#4682b4;--ansi-gray:#e5e5e5;--ansi-bright-black:#7f7f7f;--ansi-bright-red:red;--ansi-bright-green:#00d000;--ansi-bright-yellow:#ff0;--ansi-bright-blue:#5c5cff;--ansi-bright-magenta:#f0f;--ansi-bright-cyan:#0ff;--ansi-bright-gray:#fff;--colab-anchor-color:var(--colab-primary-color);--colab-highlighted-surface-color:rgba(var(--colab-primary-text-color-rgb),0.08);--colab-icon-color:var(--colab-secondary-text-color);--colab-scrollbar-color:rgba(var(--colab-primary-text-color-rgb),0.24);--colab-scrollbar-hover-color:rgba(var(--colab-primary-text-color-rgb),0.48);--colab-scrollbar-active-color:rgba(var(--colab-primary-text-color-rgb),0.48);--colab-code-font-family:monospace;--colab-chrome-font-family:"Google Sans Text","Google Sans","Noto",sans-serif;--colab-chrome-font-size:14px}html[theme=dark]{--colab-primary-color:#a8c7fa;--colab-primary-text-color:#e3e3e3;--colab-primary-text-color-rgb:227,227,227;--colab-secondary-text-color:#c4c7c5;--colab-primary-surface-color:#282a2c;--colab-secondary-surface-color:#474747;--colab-border-color:#444746;--colab-bold-border-color:#8e918f;--ansi-black:#3f3f3f;--ansi-red:#ff7a88;--ansi-green:#57bb8a;--ansi-yellow:#ff6;--ansi-blue:#82b1ff;--ansi-magenta:#cd00cd;--ansi-cyan:#99bbd7;--ansi-gray:#e5e5e5;--ansi-bright-green:#0f0}html[theme=dark].embedded{--colab-secondary-surface-color:#202124;--colab-highlighted-surface-color:#202124;--colab-border-color:#3c4043}html[editor=Synthwave84]{--colab-anchor-color:#f97e72;--colab-primary-surface-color:#262335;--colab-secondary-surface-color:#49549539;--colab-highlighted-surface-color:#37294d99;--colab-border-color:#7059ab66;--ansi-red:#fe4450;--ansi-green:#72f1b8;--ansi-yellow:#f97e72;--ansi-blue:#03edf9;--ansi-magenta:#ff7edb;--ansi-cyan:#03edf9;--ansi-bright-red:#fe4450;--ansi-bright-green:#72f1b8;--ansi-bright-yellow:#fede5d;--ansi-bright-blue:#03edf9;--ansi-bright-magenta:#ff7edb;--ansi-bright-cyan:#03edf9}html{overflow-y:hidden}body{background:var(--colab-primary-surface-color);color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-size:var(--colab-chrome-font-size);line-height:1.24;font-weight:400;padding:7px 0 10px 5px;margin:0}h1,h2,h3,h4,h5,h6{color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-weight:700;margin-bottom:4px}p,ul{margin-bottom:6px;margin-top:6px}pre{margin-bottom:0;margin-top:0}a{color:var(--colab-anchor-color)}div.output_text,div.output_text pre,div.stream{display:inline}.execute_result>pre{display:block}.output_latex,.output_markdown{max-width:1016px}.output_markdown table,table.dataframe{border-collapse:collapse;border-spacing:0;border:none;table-layout:fixed}.output_markdown table thead,table.dataframe thead{border-bottom:1px solid var(--colab-border-color);font-family:var(--colab-code-font-family);text-align:right}.output_markdown table td,.output_markdown table th,.output_markdown table tr,table.dataframe td,table.dataframe th,table.dataframe tr{border:none;padding:.5em;white-space:normal}.output_markdown table th,table.dataframe th{font-weight:700}.output_markdown table th.col_heading,table.dataframe th.col_heading{text-align:right}.output_markdown table tbody tr:nth-child(odd),table.dataframe tbody tr:nth-child(odd){background:var(--colab-secondary-surface-color)}.output_markdown table tbody tr:hover,.output_markdown table tbody tr:nth-child(odd):hover,table.dataframe tbody tr:hover,table.dataframe tbody tr:nth-child(odd):hover{background-color:var(--colab-highlighted-surface-color)}.output_markdown table td,table.dataframe td{text-align:right}table.dataTable input.text_filter{width:95%}.output_markdown table th,table.dataTable th{text-align:left}.output_image>img{background-color:#fff;max-width:100%;vertical-align:bottom}.output_image>img.unconstrained{max-width:unset}.ansibold{font-weight:700}.ansiblack{color:#000}.ansired{color:darkred}.ansigreen{color:#006400}.ansiyellow{color:brown}.ansiblue{color:#00008b}.ansipurple{color:#9400d3}.ansicyan{color:#4682b4}.ansigray{color:gray}.ansibgblack{background-color:#000}.ansibgred{background-color:red}.ansibggreen{background-color:green}.ansibgyellow{background-color:#ff0}.ansibgblue{background-color:blue}.ansibgpurple{background-color:#f0f}.ansibgcyan{background-color:cyan}.ansibggray{background-color:gray}.output-error span{font-weight:400!important}.output-error pre{white-space:pre-wrap}.display_data .output_text pre,.execute_result .output_text pre{white-space:pre-wrap}input.raw_input{font-family:var(--colab-code-font-family);width:90%}input{background:var(--colab-primary-surface-color);border:1px solid var(--colab-bold-border-color);color:var(--colab-primary-text-color)}#output-area{display:flow-root}#output-area button.colab{background-color:var(--colab-secondary-surface-color);border:0;box-shadow:0 1px 3px 1px rgba(0,0,0,.15),0 1px 2px 0 rgba(0,0,0,.3);color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-size:11px;margin:0 4px 10px;padding:6px;text-transform:uppercase;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#output-area button.colab:hover{background-color:var(--colab-highlighted-surface-color);cursor:pointer}#output-area .output-error button.error-details{background-color:#42a5f5;color:#fff}#output-area .output-error button.error-details:hover{background-color:#2196f3}#output-area .stdin-widget{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;display:inline;font-family:var(--colab-code-font-family);margin-right:10px;margin-top:10px;min-width:250px;padding:1px}#output-area .stdin-widget-hidden{visibility:hidden}.error .collapsed .extraneous{display:none}.error .error-expander{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.error .error-expander hr{border:0;border-top:1px solid var(--colab-bold-border-color);-webkit-box-flex:1;-webkit-flex-grow:1;-moz-box-flex:1;-ms-flex-positive:1;flex-grow:1;height:1px;margin:0 10px;padding:0}.error .error-expander hr:first-child{max-width:240px}.error .error-expander svg{fill:var(--colab-icon-color);height:24px;stroke:var(--colab-icon-color);width:24px}.lm-Widget.lm-mod-hidden{display:none!important}audio:focus{outline:none}::-webkit-scrollbar{height:12px;width:12px}::-webkit-scrollbar-button{height:0;width:0}::-webkit-scrollbar-corner{background:transparent}::-webkit-scrollbar-thumb{background-clip:content-box;background-color:var(--colab-scrollbar-color);border:2px solid transparent;border-radius:8px;min-height:28px;min-width:28px}::-webkit-scrollbar-thumb:hover{background-color:var(--colab-scrollbar-hover-color)}::-webkit-scrollbar-thumb:active{background-color:var(--colab-scrollbar-active-color)}@supports not (selector(::-webkit-scrollbar)){*{scrollbar-color:var(--colab-scrollbar-color) transparent}}.string-repr{display:inline}.string-repr .quote{opacity:75%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.string-repr pre{display:inline;white-space:pre-wrap;word-break:break-all}.string-repr button{color:var(--colab-primary-text-color);cursor:pointer;border:1px solid #767676;border-radius:2px;outline:none}.string-repr button.copy{background:transparent;border:none;margin-left:4px;opacity:0;padding:0;stroke:var(--colab-primary-text-color);-webkit-transition:opacity .2s;transition:opacity .2s}.string-repr button.copy svg{width:14px}.string-repr.hover button.copy,.string-repr:hover button.copy{opacity:1}.string-repr button.more{background-color:transparent;border-color:transparent;display:none;padding:0;-webkit-transition:background-color .2s,border-color .2s;transition:background-color .2s,border-color .2s}.string-repr.large button.more{display:inline}.string-repr.large.truncated button .collapse{display:none}.string-repr.large button .expand{display:none}.string-repr.large.truncated button .expand{display:inline}.string-repr.hover button.more,.string-repr:hover button.more{border-color:#767676}
+/*# sourceMappingURL=outputframe.css.map */
+//@ sourceURL=https://ssl.gstatic.com/colaboratory-static/common/59eb03e8f5d14c95e975744699cdd239/outputframe.css</style><!--<base href="https://localhost:8080/">--><base href="."></head><body><div id="output-area"><span id="output-header"> </span><div id="output-body"><div class="stream output-id-1"><div class="output_subarea output_text"><pre>Tesla quarterly financial data:
+</pre></div></div><div class="display_data output-id-2"><div class="output_subarea output_html rendered_html">
+  <div id="df-b4815e95-bf6c-4a4d-bf22-e506b95d3162" class="colab-df-container">
+    <div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2026-06-30</th>
+      <th>2026-03-31</th>
+      <th>2025-12-31</th>
+      <th>2025-09-30</th>
+      <th>2025-06-30</th>
+      <th>2025-03-31</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Tax Effect Of Unusual Items</th>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-4.458086e+07</td>
+      <td>-6.902000e+07</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Tax Rate For Calcs</th>
+      <td>1.500000e-01</td>
+      <td>3.400000e-01</td>
+      <td>2.751910e-01</td>
+      <td>2.900000e-01</td>
+      <td>2.317620e-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Normalized EBITDA</th>
+      <td>3.029000e+09</td>
+      <td>2.430000e+09</td>
+      <td>3.071000e+09</td>
+      <td>3.898000e+09</td>
+      <td>3.068000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Unusual Items</th>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-1.620000e+08</td>
+      <td>-2.380000e+08</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Unusual Items Excluding Goodwill</th>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-1.620000e+08</td>
+      <td>-2.380000e+08</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income From Continuing Operation Net Minority Interest</th>
+      <td>1.114000e+09</td>
+      <td>4.770000e+08</td>
+      <td>8.400000e+08</td>
+      <td>1.373000e+09</td>
+      <td>1.172000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Reconciled Depreciation</th>
+      <td>1.619000e+09</td>
+      <td>1.590000e+09</td>
+      <td>1.643000e+09</td>
+      <td>1.625000e+09</td>
+      <td>1.433000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Reconciled Cost Of Revenue</th>
+      <td>2.348500e+10</td>
+      <td>1.766700e+10</td>
+      <td>1.989200e+10</td>
+      <td>2.304100e+10</td>
+      <td>1.861800e+10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBITDA</th>
+      <td>3.029000e+09</td>
+      <td>2.430000e+09</td>
+      <td>2.909000e+09</td>
+      <td>3.660000e+09</td>
+      <td>3.068000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBIT</th>
+      <td>1.410000e+09</td>
+      <td>8.400000e+08</td>
+      <td>1.266000e+09</td>
+      <td>2.035000e+09</td>
+      <td>1.635000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Interest Income</th>
+      <td>3.410000e+08</td>
+      <td>3.420000e+08</td>
+      <td>3.640000e+08</td>
+      <td>3.630000e+08</td>
+      <td>3.060000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Interest Expense</th>
+      <td>8.100000e+07</td>
+      <td>9.200000e+07</td>
+      <td>8.500000e+07</td>
+      <td>7.600000e+07</td>
+      <td>8.600000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Interest Income</th>
+      <td>4.220000e+08</td>
+      <td>4.340000e+08</td>
+      <td>4.490000e+08</td>
+      <td>4.390000e+08</td>
+      <td>3.920000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Normalized Income</th>
+      <td>1.114000e+09</td>
+      <td>4.770000e+08</td>
+      <td>9.574191e+08</td>
+      <td>1.541980e+09</td>
+      <td>1.172000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income From Continuing And Discontinued Operation</th>
+      <td>1.114000e+09</td>
+      <td>4.770000e+08</td>
+      <td>8.400000e+08</td>
+      <td>1.373000e+09</td>
+      <td>1.172000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Expenses</th>
+      <td>2.783800e+10</td>
+      <td>2.144600e+10</td>
+      <td>2.333000e+10</td>
+      <td>2.623300e+10</td>
+      <td>2.157300e+10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Rent Expense Supplemental</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.280000e+08</td>
+      <td>239000000.0</td>
+    </tr>
+    <tr>
+      <th>Total Operating Income As Reported</th>
+      <td>3.980000e+08</td>
+      <td>9.410000e+08</td>
+      <td>1.409000e+09</td>
+      <td>1.624000e+09</td>
+      <td>9.230000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Diluted Average Shares</th>
+      <td>3.540000e+09</td>
+      <td>3.538000e+09</td>
+      <td>3.539000e+09</td>
+      <td>3.526000e+09</td>
+      <td>3.519000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Basic Average Shares</th>
+      <td>3.237000e+09</td>
+      <td>3.234000e+09</td>
+      <td>3.231000e+09</td>
+      <td>3.227000e+09</td>
+      <td>3.223000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Diluted EPS</th>
+      <td>3.200000e-01</td>
+      <td>1.300000e-01</td>
+      <td>2.400000e-01</td>
+      <td>3.900000e-01</td>
+      <td>3.300000e-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Basic EPS</th>
+      <td>3.400000e-01</td>
+      <td>1.500000e-01</td>
+      <td>2.600000e-01</td>
+      <td>4.300000e-01</td>
+      <td>3.600000e-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Diluted NI Availto Com Stockholders</th>
+      <td>1.116000e+09</td>
+      <td>4.770000e+08</td>
+      <td>8.400000e+08</td>
+      <td>1.373000e+09</td>
+      <td>1.172000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income Common Stockholders</th>
+      <td>1.116000e+09</td>
+      <td>4.770000e+08</td>
+      <td>8.400000e+08</td>
+      <td>1.373000e+09</td>
+      <td>1.172000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Otherunder Preferred Stock Dividend</th>
+      <td>-2.000000e+06</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000000e+00</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Net Income</th>
+      <td>1.114000e+09</td>
+      <td>4.770000e+08</td>
+      <td>8.400000e+08</td>
+      <td>1.373000e+09</td>
+      <td>1.172000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Minority Interests</th>
+      <td>-1.400000e+07</td>
+      <td>-1.400000e+07</td>
+      <td>-1.600000e+07</td>
+      <td>-1.600000e+07</td>
+      <td>-1.800000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income Including Noncontrolling Interests</th>
+      <td>1.128000e+09</td>
+      <td>4.910000e+08</td>
+      <td>8.560000e+08</td>
+      <td>1.389000e+09</td>
+      <td>1.190000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income Continuous Operations</th>
+      <td>1.128000e+09</td>
+      <td>4.910000e+08</td>
+      <td>8.560000e+08</td>
+      <td>1.389000e+09</td>
+      <td>1.190000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Tax Provision</th>
+      <td>2.010000e+08</td>
+      <td>2.570000e+08</td>
+      <td>3.250000e+08</td>
+      <td>5.700000e+08</td>
+      <td>3.590000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Pretax Income</th>
+      <td>1.329000e+09</td>
+      <td>7.480000e+08</td>
+      <td>1.181000e+09</td>
+      <td>1.959000e+09</td>
+      <td>1.549000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Other Income Expense</th>
+      <td>5.900000e+08</td>
+      <td>-5.350000e+08</td>
+      <td>-7.540000e+08</td>
+      <td>-2.660000e+08</td>
+      <td>3.200000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Other Non Operating Income Expenses</th>
+      <td>5.900000e+08</td>
+      <td>-5.350000e+08</td>
+      <td>-5.920000e+08</td>
+      <td>-2.800000e+07</td>
+      <td>3.200000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Special Income Charges</th>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-1.620000e+08</td>
+      <td>-2.380000e+08</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Restructuring And Mergern Acquisition</th>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>1.620000e+08</td>
+      <td>2.380000e+08</td>
+      <td>0.000000e+00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Non Operating Interest Income Expense</th>
+      <td>3.410000e+08</td>
+      <td>3.420000e+08</td>
+      <td>3.640000e+08</td>
+      <td>3.630000e+08</td>
+      <td>3.060000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Interest Expense Non Operating</th>
+      <td>8.100000e+07</td>
+      <td>9.200000e+07</td>
+      <td>8.500000e+07</td>
+      <td>7.600000e+07</td>
+      <td>8.600000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Interest Income Non Operating</th>
+      <td>4.220000e+08</td>
+      <td>4.340000e+08</td>
+      <td>4.490000e+08</td>
+      <td>4.390000e+08</td>
+      <td>3.920000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Operating Income</th>
+      <td>3.980000e+08</td>
+      <td>9.410000e+08</td>
+      <td>1.571000e+09</td>
+      <td>1.862000e+09</td>
+      <td>9.230000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Operating Expense</th>
+      <td>4.353000e+09</td>
+      <td>3.779000e+09</td>
+      <td>3.438000e+09</td>
+      <td>3.192000e+09</td>
+      <td>2.955000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Research And Development</th>
+      <td>2.371000e+09</td>
+      <td>1.946000e+09</td>
+      <td>1.783000e+09</td>
+      <td>1.630000e+09</td>
+      <td>1.589000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Selling General And Administration</th>
+      <td>1.982000e+09</td>
+      <td>1.833000e+09</td>
+      <td>1.655000e+09</td>
+      <td>1.562000e+09</td>
+      <td>1.366000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Gross Profit</th>
+      <td>4.751000e+09</td>
+      <td>4.720000e+09</td>
+      <td>5.009000e+09</td>
+      <td>5.054000e+09</td>
+      <td>3.878000e+09</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Cost Of Revenue</th>
+      <td>2.348500e+10</td>
+      <td>1.766700e+10</td>
+      <td>1.989200e+10</td>
+      <td>2.304100e+10</td>
+      <td>1.861800e+10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Revenue</th>
+      <td>2.823600e+10</td>
+      <td>2.238700e+10</td>
+      <td>2.490100e+10</td>
+      <td>2.809500e+10</td>
+      <td>2.249600e+10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Operating Revenue</th>
+      <td>2.823600e+10</td>
+      <td>2.238700e+10</td>
+      <td>2.490100e+10</td>
+      <td>2.809500e+10</td>
+      <td>2.249600e+10</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b4815e95-bf6c-4a4d-bf22-e506b95d3162')" title="Convert this dataframe to an interactive table." style="display: block;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script type="">
+      const buttonEl =
+        document.querySelector('#df-b4815e95-bf6c-4a4d-bf22-e506b95d3162 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b4815e95-bf6c-4a4d-bf22-e506b95d3162');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+  <div id="id_ce992b18-89e0-4a9b-9463-e8bcb018fd8a">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('tesla_revenue')" title="Generate code using this dataframe." style="display: block;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script type="">
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_ce992b18-89e0-4a9b-9463-e8bcb018fd8a button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('tesla_revenue');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div><div class="stream output-id-3"><div class="output_subarea output_text"><pre>GameStop quarterly financial data:
+</pre></div></div><div class="display_data output-id-4"><div class="output_subarea output_html rendered_html">
+  <div id="df-4dfabbc0-4e10-43dc-8d90-db36ed439eeb" class="colab-df-container">
+    <div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2026-07-31</th>
+      <th>2026-04-30</th>
+      <th>2026-01-31</th>
+      <th>2025-10-31</th>
+      <th>2025-07-31</th>
+      <th>2025-04-30</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Tax Effect Of Unusual Items</th>
+      <td>4.788730e+07</td>
+      <td>6.331710e+07</td>
+      <td>-6.428000e+07</td>
+      <td>-1.651700e+06</td>
+      <td>1.054983e+06</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Tax Rate For Calcs</th>
+      <td>2.890000e-01</td>
+      <td>2.310000e-01</td>
+      <td>4.000000e-01</td>
+      <td>8.300000e-02</td>
+      <td>3.436400e-02</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Normalized EBITDA</th>
+      <td>-3.200000e+06</td>
+      <td>-1.309000e+08</td>
+      <td>3.056000e+08</td>
+      <td>7.650000e+07</td>
+      <td>3.830000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Unusual Items</th>
+      <td>1.657000e+08</td>
+      <td>2.741000e+08</td>
+      <td>-1.607000e+08</td>
+      <td>-1.990000e+07</td>
+      <td>3.070000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Unusual Items Excluding Goodwill</th>
+      <td>1.657000e+08</td>
+      <td>2.741000e+08</td>
+      <td>-1.607000e+08</td>
+      <td>-1.990000e+07</td>
+      <td>3.070000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income From Continuing Operation Net Minority Interest</th>
+      <td>2.987000e+08</td>
+      <td>3.896000e+08</td>
+      <td>1.279000e+08</td>
+      <td>7.710000e+07</td>
+      <td>1.686000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Reconciled Depreciation</th>
+      <td>4.600000e+06</td>
+      <td>4.500000e+06</td>
+      <td>-3.000000e+05</td>
+      <td>4.600000e+06</td>
+      <td>4.700000e+06</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Reconciled Cost Of Revenue</th>
+      <td>4.452000e+08</td>
+      <td>4.950000e+08</td>
+      <td>7.175000e+08</td>
+      <td>5.476000e+08</td>
+      <td>6.891000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBITDA</th>
+      <td>1.625000e+08</td>
+      <td>1.432000e+08</td>
+      <td>1.449000e+08</td>
+      <td>5.660000e+07</td>
+      <td>6.900000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>EBIT</th>
+      <td>1.579000e+08</td>
+      <td>1.387000e+08</td>
+      <td>1.449000e+08</td>
+      <td>5.200000e+07</td>
+      <td>6.430000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Interest Income</th>
+      <td>7.710000e+07</td>
+      <td>8.370000e+07</td>
+      <td>8.600000e+07</td>
+      <td>4.900000e+07</td>
+      <td>7.960000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Interest Income</th>
+      <td>7.710000e+07</td>
+      <td>8.370000e+07</td>
+      <td>8.600000e+07</td>
+      <td>4.900000e+07</td>
+      <td>7.960000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Normalized Income</th>
+      <td>1.808873e+08</td>
+      <td>1.788171e+08</td>
+      <td>2.243200e+08</td>
+      <td>9.534830e+07</td>
+      <td>1.389550e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income From Continuing And Discontinued Operation</th>
+      <td>2.987000e+08</td>
+      <td>3.896000e+08</td>
+      <td>1.279000e+08</td>
+      <td>7.710000e+07</td>
+      <td>1.686000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Expenses</th>
+      <td>6.323000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Operating Income As Reported</th>
+      <td>1.532000e+08</td>
+      <td>1.433000e+08</td>
+      <td>1.352000e+08</td>
+      <td>4.130000e+07</td>
+      <td>6.640000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Diluted Average Shares</th>
+      <td>5.925000e+08</td>
+      <td>5.923000e+08</td>
+      <td>5.920000e+08</td>
+      <td>5.917000e+08</td>
+      <td>5.465000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Basic Average Shares</th>
+      <td>4.486000e+08</td>
+      <td>4.484000e+08</td>
+      <td>4.481000e+08</td>
+      <td>4.477000e+08</td>
+      <td>4.474000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Diluted EPS</th>
+      <td>5.100000e-01</td>
+      <td>6.600000e-01</td>
+      <td>2.200000e-01</td>
+      <td>1.300000e-01</td>
+      <td>3.100000e-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Basic EPS</th>
+      <td>6.700000e-01</td>
+      <td>8.700000e-01</td>
+      <td>2.900000e-01</td>
+      <td>1.700000e-01</td>
+      <td>3.800000e-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Diluted NI Availto Com Stockholders</th>
+      <td>2.987000e+08</td>
+      <td>3.896000e+08</td>
+      <td>1.279000e+08</td>
+      <td>7.710000e+07</td>
+      <td>1.686000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income Common Stockholders</th>
+      <td>2.987000e+08</td>
+      <td>3.896000e+08</td>
+      <td>1.279000e+08</td>
+      <td>7.710000e+07</td>
+      <td>1.686000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income</th>
+      <td>2.987000e+08</td>
+      <td>3.896000e+08</td>
+      <td>1.279000e+08</td>
+      <td>7.710000e+07</td>
+      <td>1.686000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income Including Noncontrolling Interests</th>
+      <td>2.987000e+08</td>
+      <td>3.896000e+08</td>
+      <td>1.279000e+08</td>
+      <td>7.710000e+07</td>
+      <td>1.686000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Income Continuous Operations</th>
+      <td>2.987000e+08</td>
+      <td>3.896000e+08</td>
+      <td>1.279000e+08</td>
+      <td>7.710000e+07</td>
+      <td>1.686000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Tax Provision</th>
+      <td>1.215000e+08</td>
+      <td>1.168000e+08</td>
+      <td>-5.090000e+07</td>
+      <td>7.000000e+06</td>
+      <td>6.000000e+06</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Pretax Income</th>
+      <td>4.202000e+08</td>
+      <td>5.064000e+08</td>
+      <td>7.700000e+07</td>
+      <td>8.410000e+07</td>
+      <td>1.746000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Other Income Expense</th>
+      <td>1.852000e+08</td>
+      <td>2.840000e+08</td>
+      <td>-1.539000e+08</td>
+      <td>-1.690000e+07</td>
+      <td>3.070000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Other Non Operating Income Expenses</th>
+      <td>1.950000e+07</td>
+      <td>9.900000e+06</td>
+      <td>6.800000e+06</td>
+      <td>3.000000e+06</td>
+      <td>NaN</td>
+      <td>2200000.0</td>
+    </tr>
+    <tr>
+      <th>Special Income Charges</th>
+      <td>-7.270000e+07</td>
+      <td>5.700000e+06</td>
+      <td>-1.607000e+08</td>
+      <td>-1.990000e+07</td>
+      <td>3.070000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Gain On Sale Of Ppe</th>
+      <td>-7.500000e+07</td>
+      <td>1.100000e+06</td>
+      <td>-1.510000e+08</td>
+      <td>-9.200000e+06</td>
+      <td>2.860000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Write Off</th>
+      <td>-2.300000e+06</td>
+      <td>-4.600000e+06</td>
+      <td>9.700000e+06</td>
+      <td>1.070000e+07</td>
+      <td>-2.100000e+06</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Gain On Sale Of Security</th>
+      <td>2.384000e+08</td>
+      <td>2.684000e+08</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Net Non Operating Interest Income Expense</th>
+      <td>7.710000e+07</td>
+      <td>8.370000e+07</td>
+      <td>8.600000e+07</td>
+      <td>4.900000e+07</td>
+      <td>7.960000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Interest Income Non Operating</th>
+      <td>7.710000e+07</td>
+      <td>8.370000e+07</td>
+      <td>8.600000e+07</td>
+      <td>4.900000e+07</td>
+      <td>7.960000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Operating Income</th>
+      <td>1.579000e+08</td>
+      <td>1.387000e+08</td>
+      <td>1.449000e+08</td>
+      <td>5.200000e+07</td>
+      <td>6.430000e+07</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Operating Expense</th>
+      <td>1.871000e+08</td>
+      <td>2.016000e+08</td>
+      <td>2.419000e+08</td>
+      <td>2.214000e+08</td>
+      <td>2.188000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Selling General And Administration</th>
+      <td>1.871000e+08</td>
+      <td>2.016000e+08</td>
+      <td>2.419000e+08</td>
+      <td>2.214000e+08</td>
+      <td>2.188000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Gross Profit</th>
+      <td>3.450000e+08</td>
+      <td>3.403000e+08</td>
+      <td>3.868000e+08</td>
+      <td>2.734000e+08</td>
+      <td>2.831000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Cost Of Revenue</th>
+      <td>4.452000e+08</td>
+      <td>4.950000e+08</td>
+      <td>7.175000e+08</td>
+      <td>5.476000e+08</td>
+      <td>6.891000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Total Revenue</th>
+      <td>7.902000e+08</td>
+      <td>8.353000e+08</td>
+      <td>1.104300e+09</td>
+      <td>8.210000e+08</td>
+      <td>9.722000e+08</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Operating Revenue</th>
+      <td>7.902000e+08</td>
+      <td>8.353000e+08</td>
+      <td>1.104300e+09</td>
+      <td>8.210000e+08</td>
+      <td>9.722000e+08</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4dfabbc0-4e10-43dc-8d90-db36ed439eeb')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script type="">
+      const buttonEl =
+        document.querySelector('#df-4dfabbc0-4e10-43dc-8d90-db36ed439eeb button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4dfabbc0-4e10-43dc-8d90-db36ed439eeb');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+  <div id="id_b2bdc7e9-cd5b-4e9f-8e0c-f918950a51e2">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('gme_revenue')" title="Generate code using this dataframe." style="display: block;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script type="">
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_b2bdc7e9-cd5b-4e9f-8e0c-f918950a51e2 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('gme_revenue');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div></div><span id="output-footer"></span></div></body></html>
